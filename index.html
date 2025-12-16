@@ -436,20 +436,20 @@
                         <rect x="180" y="20" width="5" height="80" fill="var(--text-primary)"/>
                         <text x="160" y="110" font-size="10" fill="var(--text-secondary)">Seam</text>
                     </svg>
-                    <div class="vis-label bad">High Jerk</div>
-                    <div class="vis-label good">Low Jerk</div>
+                    <div class="vis-label bad">High Acceleration</div>
+                    <div class="vis-label good">Low Acceleration</div>
                 </div>
             </div>
             <div class="vis-card">
-                <div class="vis-title"><span class="lang-en">Pressure Advance</span><span class="lang-es hidden">Avance de Presión</span></div>
+                <div class="vis-title"><span class="lang-en">Corner Sharpness</span><span class="lang-es hidden">Nitidez de Esquinas</span></div>
                 <div class="vis-svg-container">
                     <svg width="200" height="120" viewBox="0 0 200 120">
                         <path d="M50,80 L100,80 L100,30" fill="none" stroke="var(--vis-line-bad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
                         <circle cx="100" cy="80" r="8" fill="var(--danger)" opacity="0.5"/>
                         <path d="M140,80 L190,80 L190,30" fill="none" stroke="var(--vis-line-good)" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/>
                     </svg>
-                    <div class="vis-label bad">PA: Off</div>
-                    <div class="vis-label good">PA: On</div>
+                    <div class="vis-label bad">Default</div>
+                    <div class="vis-label good">Tuned</div>
                 </div>
             </div>
         </section>
@@ -462,45 +462,36 @@
                 <span class="lang-es hidden">Fase 2: Eliminar "Sombras" (Ghosting)</span>
             </div>
 
-            <!-- Checklist Item 6 (New) -->
+            <!-- Checklist Item 6 (Updated) -->
             <label class="checklist-item" onclick="toggleInfo(this)">
                 <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
                 <div class="item-content">
-                    <span class="item-title"><span class="lang-en">Enable Jerk Control</span><span class="lang-es hidden">Habilitar Control de Jerk</span><span class="info-btn">?</span></span>
-                    <div class="item-desc"><span class="lang-en">Jerk Control:</span><span class="lang-es hidden">Control Jerk:</span> <span class="val-bad">Disabled</span> <span class="item-arrow">➔</span> <span class="val-good">Enabled</span></div>
-                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> Standard settings let the heavy A350 head change direction too fast, causing vibration (shadows). We must cap this force.</span><span class="lang-es hidden"><strong>Por qué:</strong> El cabezal pesado del A350 cambia de dirección muy rápido, causando vibración. Debemos limitar esta fuerza.</span></div>
-                </div>
-            </label>
-
-            <!-- Checklist Item 7 (New) -->
-            <label class="checklist-item" onclick="toggleInfo(this)">
-                <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
-                <div class="item-content">
-                    <span class="item-title"><span class="lang-en">Set Outer Wall Jerk</span><span class="lang-es hidden">Fijar Jerk Pared Ext.</span><span class="info-btn">?</span></span>
-                    <div class="item-desc"><span class="lang-en">Outer Wall Jerk:</span><span class="lang-es hidden">Jerk Pared Ext:</span> <span class="val-bad">12+</span> <span class="item-arrow">➔</span> <span class="val-good">5 mm/s</span></div>
-                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> 5mm/s is very gentle. It prevents the "crash" when the printer stops at the embossed letter, eliminating the shadow.</span><span class="lang-es hidden"><strong>Por qué:</strong> 5mm/s es muy suave. Evita el "choque" cuando la impresora para en la letra, eliminando la sombra.</span></div>
-                </div>
-            </label>
-
-            <!-- Checklist Item 8 (New) -->
-            <label class="checklist-item" onclick="toggleInfo(this)">
-                <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
-                <div class="item-content">
-                    <span class="item-title"><span class="lang-en">Reduce Acceleration Further</span><span class="lang-es hidden">Reducir Acel. Aún Más</span><span class="info-btn">?</span></span>
+                    <span class="item-title"><span class="lang-en">Primary Fix: Lower Outer Accel</span><span class="lang-es hidden">Arreglo Principal: Bajar Acel. Ext</span><span class="info-btn">?</span></span>
                     <div class="item-desc"><span class="lang-en">Outer Wall Accel:</span><span class="lang-es hidden">Acel. Pared Ext:</span> <span class="val-bad">500</span> <span class="item-arrow">➔</span> <span class="val-good">350 mm/s²</span></div>
-                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> For perfect cosmetic walls on a heavy bed-slinger, 350 is the "safe zone" to kill all ringing.</span><span class="lang-es hidden"><strong>Por qué:</strong> Para paredes perfectas en una máquina pesada, 350 es la "zona segura" para eliminar vibraciones.</span></div>
+                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> Since standard Jerk controls are missing, drastically lowering acceleration is the only way to reduce the force that causes ghosting on a heavy printer.</span><span class="lang-es hidden"><strong>Por qué:</strong> Sin control de Jerk estándar, bajar drásticamente la aceleración es la única forma de reducir la fuerza que causa ghosting en una impresora pesada.</span></div>
+                </div>
+            </label>
+
+            <!-- Checklist Item 7 (Updated) -->
+            <label class="checklist-item" onclick="toggleInfo(this)">
+                <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
+                <div class="item-content">
+                    <span class="item-title"><span class="lang-en">Junction Deviation (If Available)</span><span class="lang-es hidden">Junction Deviation (Si existe)</span><span class="info-btn">?</span></span>
+                    <div class="item-desc"><span class="lang-en">Setting:</span><span class="lang-es hidden">Ajuste:</span> <span class="val-bad">Default</span> <span class="item-arrow">➔</span> <span class="val-good">0.05 mm</span></div>
+                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> "Junction Deviation" is the math your firmware uses instead of "Jerk". Lowering it (to 0.05) forces slower, smoother corners.</span><span class="lang-es hidden"><strong>Por qué:</strong> "Junction Deviation" es la matemática que usa tu firmware en lugar de "Jerk". Bajarlo (a 0.05) fuerza esquinas más lentas y suaves.</span></div>
+                </div>
+            </label>
+
+             <!-- Checklist Item 8 (New Placeholder) -->
+             <label class="checklist-item" onclick="toggleInfo(this)">
+                <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
+                <div class="item-content">
+                    <span class="item-title"><span class="lang-en">Fine Tune: Inner Wall Speed</span><span class="lang-es hidden">Ajuste Fino: Vel. Pared Int.</span><span class="info-btn">?</span></span>
+                    <div class="item-desc"><span class="lang-en">Inner Wall Speed:</span><span class="lang-es hidden">Vel. Pared Int:</span> <span class="val-bad">100</span> <span class="item-arrow">➔</span> <span class="val-good">80 mm/s</span></div>
+                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> Vibrations from the inner wall can transfer to the outer wall. Slowing this down helps the whole print settle.</span><span class="lang-es hidden"><strong>Por qué:</strong> Las vibraciones de la pared interior pueden transferirse a la exterior. Reducir esto ayuda a estabilizar la impresión.</span></div>
                 </div>
             </label>
             
-            <!-- Checklist Item 9 (New) -->
-            <label class="checklist-item" onclick="toggleInfo(this)">
-                <input type="checkbox" class="checklist-checkbox" onchange="toggleComplete(this)">
-                <div class="item-content">
-                    <span class="item-title"><span class="lang-en">Pressure Advance</span><span class="lang-es hidden">Avance de Presión</span><span class="info-btn">?</span></span>
-                    <div class="item-desc"><span class="lang-en">Pressure Advance:</span><span class="lang-es hidden">Avance Presión:</span> <span class="val-bad">Off</span> <span class="item-arrow">➔</span> <span class="val-good">On (0.04)</span></div>
-                    <div class="tooltip-content"><span class="lang-en"><strong>Why:</strong> Stops nozzle oozing during the deceleration at corners. Start with 0.04 for PLA Direct Drive.</span><span class="lang-es hidden"><strong>Por qué:</strong> Detiene el rezume de la boquilla al desacelerar en esquinas. Empieza con 0.04 para PLA Direct Drive.</span></div>
-                </div>
-            </label>
         </section>
     </div>
 
@@ -570,7 +561,7 @@
                 <div class="t-row tier-3"><span class="t-label"><span class="lang-en">Max Detour Length</span><span class="lang-es hidden">Longitud Máx Desvío</span></span><span class="t-val">0 mm</span></div>
                 <div class="t-row"><span class="t-label"><span class="lang-en">Elephant Foot Comp</span><span class="lang-es hidden">Comp. Pata Elefante</span></span><span class="t-val">0.15 mm</span></div>
                 <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Bottom Flow Ratio</span><span class="lang-es hidden">Flujo Inf. Ratio</span></span><span class="t-val">1.2 (<span class="lang-en">Fix: 1.0</span><span class="lang-es hidden">Fix: 1.0</span>)</span></div>
-                <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Pressure Advance</span><span class="lang-es hidden">Avance de Presión</span></span><span class="t-val">N/A (<span class="lang-en">Fix: 0.04</span><span class="lang-es hidden">Fix: 0.04</span>)</span></div>
+                <div class="t-row tier-3"><span class="t-label"><span class="lang-en">Pressure Advance</span><span class="lang-es hidden">Avance de Presión</span></span><span class="t-val">N/A</span></div>
 
                 <!-- Sub: Ironing -->
                 <div class="t-subheader"><span class="lang-en">Ironing</span><span class="lang-es hidden">Alisado</span></div>
@@ -630,7 +621,7 @@
                 <div class="t-row tier-3"><span class="t-label"><span class="lang-en">First Layer</span><span class="lang-es hidden">Primera Capa</span></span><span class="t-val">50 mm/s</span></div>
                 <div class="t-row tier-3"><span class="t-label"><span class="lang-en">First Layer Infill</span><span class="lang-es hidden">Relleno 1ª Capa</span></span><span class="t-val">65 mm/s</span></div>
                 <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Outer Wall</span><span class="lang-es hidden">Pared Exterior</span></span><span class="t-val">80 mm/s (<span class="lang-en">Fix: 40</span><span class="lang-es hidden">Fix: 40</span>)</span></div>
-                <div class="t-row"><span class="t-label"><span class="lang-en">Inner Wall</span><span class="lang-es hidden">Pared Interior</span></span><span class="t-val">100 mm/s</span></div>
+                <div class="t-row"><span class="t-label"><span class="lang-en">Inner Wall</span><span class="lang-es hidden">Pared Interior</span></span><span class="t-val">100 mm/s (<span class="lang-en">Fix: 80</span><span class="lang-es hidden">Fix: 80</span>)</span></div>
                 <div class="t-row"><span class="t-label"><span class="lang-en">Sparse Infill</span><span class="lang-es hidden">Relleno Disperso</span></span><span class="t-val">95 mm/s</span></div>
                 <div class="t-row tier-3"><span class="t-label"><span class="lang-en">Internal Solid Infill</span><span class="lang-es hidden">Relleno Sólido Int.</span></span><span class="t-val">90 mm/s</span></div>
                 <div class="t-row tier-3"><span class="t-label"><span class="lang-en">Top Surface</span><span class="lang-es hidden">Superficie Superior</span></span><span class="t-val">65 mm/s</span></div>
@@ -659,8 +650,7 @@
 
                 <!-- Sub: Jerk -->
                 <div class="t-subheader"><span class="lang-en">Jerk</span><span class="lang-es hidden">Jerk (Sacudida)</span></div>
-                <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Jerk Control</span><span class="lang-es hidden">Control de Jerk</span></span><span class="t-val">Disabled (<span class="lang-en">Fix: Enabled</span><span class="lang-es hidden">Fix: Activado</span>)</span></div>
-                <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Outer Wall Jerk</span><span class="lang-es hidden">Jerk Pared Ext.</span></span><span class="t-val">N/A (<span class="lang-en">Fix: 5 mm/s</span><span class="lang-es hidden">Fix: 5 mm/s</span>)</span></div>
+                <div class="t-row tier-1"><span class="t-label"><span class="lang-en">Jerk Control</span><span class="lang-es hidden">Control de Jerk</span></span><span class="t-val">Default (<span class="lang-en">Fix: Junction Dev.</span><span class="lang-es hidden">Fix: Junction Dev.</span>)</span></div>
             </div>
         </div>
 
